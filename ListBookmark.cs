@@ -36,7 +36,6 @@ namespace Project_Browser
             tail = null;
             currentPage = null;
         }
-
         public void addTail(string address)
         {
             if (address == "NULL")

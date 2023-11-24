@@ -12,6 +12,8 @@ namespace Project_Browser
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
+
+            
         }
     }
 }

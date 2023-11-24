@@ -1,4 +1,6 @@
-﻿namespace Project_Browser
+﻿using System.Net;
+
+namespace Project_Browser
 {
     public partial class Form1 : Form
     {
@@ -11,10 +13,16 @@
 
         public Form1()
         {
+            Read_Bookmark();
+            Read_History();
+
             win1.addTail(tab1);
             listWindow.addTail(win1);
 
             InitializeComponent();
+
+            Create_Button_Bookmark();
+            Create_Button_History();
 
             currentButton = button_Tab_0;
         }
@@ -82,7 +90,7 @@
 
             // Lấy ra nội dung của lịch sử bằng cách bỏ đi thành phần ngày tháng
             string originalText = button.Text;
-            for (int i =  0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 // Find the index of the space before the date and time part
                 int spaceIndex = originalText.LastIndexOf(' ');
@@ -273,6 +281,19 @@
                     listWindow.currentWindow.window.currentTab.tab.addTail(address);
                     textBox_Search.Clear();
 
+                    // Thêm lịch sử
+                    listHistory.addTail(address);
+
+                    // Thêm button vào danh sách hiện lịch sử
+                    Button his = new Button();
+                    his.Name = "button_His_";
+                    his.Size = new Size(360, 51);
+                    his.TabIndex = 3;
+                    his.UseVisualStyleBackColor = true;
+                    his.MouseUp += Button_His_Click;
+                    his.Text = listHistory.tail.his + " " + listHistory.tail.date;
+                    flowLayoutPanel5.Controls.Add(his);
+
                     check_Back_Next_Button();
                 }
             }
@@ -293,6 +314,169 @@
             else
             {
                 flowLayoutPanel5.Visible = true;
+            }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Bookmark
+            try
+            {
+                //Pass the filepath and filename to the StreamWriter Constructor
+                //D:\DSA\Project_Browser\bin\Debug\net7.0-windows
+                StreamWriter sw = new StreamWriter("Bookmark.txt");
+
+                for (NodeBookmark p = listBookmark.head; p != null; p = p.next)
+                {
+                    sw.WriteLine(p.url);
+                }
+
+                //Close the file
+                sw.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Executing finally block.");
+            }
+
+            // History
+            try
+            {
+                //Pass the filepath and filename to the StreamWriter Constructor
+                //D:\DSA\Project_Browser\bin\Debug\net7.0-windows
+                StreamWriter sw = new StreamWriter("History.txt");
+
+                for (NodeHistory p = listHistory.head; p != null; p = p.next)
+                {
+                    sw.WriteLine(p.his + " " + p.date.Month + " " + p.date.Day + " " + p.date.Year + " " + p.date.Hour + " " + 
+                        p.date.Minute + " " + p.date.Second);
+                }
+
+                //Close the file
+                sw.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Executing finally block.");
+            }
+
+            Application.Exit();
+        }
+
+        private void Read_Bookmark()
+        {
+            string line;
+            try
+            {
+                //Pass the file path and file name to the StreamReader constructor
+                StreamReader sr = new StreamReader("Bookmark.txt");
+                //Read the first line of text
+                line = sr.ReadLine();
+                //Continue to read until you reach end of file
+                while (line != null && line != "")
+                {
+                    listBookmark.addTail(line);
+                    //Read the next line
+                    line = sr.ReadLine();
+                }
+                //close the file
+                sr.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Executing finally block.");
+            }
+        }
+
+        private void Create_Button_Bookmark()
+        {
+            if (listBookmark.isEmpty())
+                return;
+
+            for (NodeBookmark p = listBookmark.head; p != null; p = p.next)
+            {
+                Button button = new Button();
+                button.Name = "button_Bookmark_" + p.index;
+                button.Size = new Size(112, 51);
+                button.TabIndex = 3;
+                button.UseVisualStyleBackColor = true;
+                button.MouseUp += Button_Bookmark_Click;
+                button.Text = p.url;
+
+                flowLayoutPanel4.Controls.Add(button);
+            }    
+            
+        }
+        
+        private void Read_History()
+        {
+            
+            string line;
+            try
+            {
+                
+                //Pass the file path and file name to the StreamReader constructor
+                StreamReader sr = new StreamReader("History.txt");
+                //Read the first line of text
+                line = sr.ReadLine();
+                //Continue to read until you reach end of file
+                while (line != null && line != "")
+                {
+                    // Split the string by space
+                    string[] parts = line.Split(' ');
+
+                    // Extract values from the array and convert to the desired types
+                    string url = parts[0];
+                    int month = int.Parse(parts[1]);
+                    int day = int.Parse(parts[2]);
+                    int year = int.Parse(parts[3]);
+                    int hour = int.Parse(parts[4]);
+                    int minute = int.Parse(parts[5]);
+                    int second = int.Parse(parts[6]);
+
+                    listHistory.addTail(url, month, day, year, hour, minute, second);
+                    //Read the next line
+                    line = sr.ReadLine();
+                }
+                //close the file
+                sr.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Executing finally block.");
+            }
+
+        }
+
+        private void Create_Button_History()
+        {
+            for (NodeHistory p = listHistory.head; p != null; p = p.next)
+            {
+                // Thêm button vào danh sách hiện lịch sử
+                Button button = new Button();
+                button.Name = "button_His_";
+                button.Size = new Size(360, 51);
+                button.TabIndex = 3;
+                button.UseVisualStyleBackColor = true;
+                button.MouseUp += Button_His_Click;
+                button.Text = p.his + " " + p.date;
+                flowLayoutPanel5.Controls.Add(button);
             }
         }
     }

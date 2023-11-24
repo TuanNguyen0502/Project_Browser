@@ -22,6 +22,13 @@ namespace Project_Browser
             prev = null;
             this.date = DateTime.Now;
         }
+        public NodeHistory(string url, int month, int day, int year, int hour, int minute, int second)
+        {
+            this.his = url;
+            next = null;
+            prev = null;
+            this.date = new DateTime(year, month, day, hour, minute, second);
+        }
     }
     public class ListHistory
     {
@@ -34,6 +41,24 @@ namespace Project_Browser
         {
             head = null;
             tail = null;
+        }
+
+        public void addTail(string url, int month, int day, int year, int hour, int minute, int second)
+        {
+            NodeHistory newNode = new NodeHistory(url, month, day, year, hour, minute, second);
+            currentHistory = newNode;
+            if (tail == null)
+            {
+                head = newNode;
+                tail = newNode;
+            }
+            else
+            {
+                newNode.prev = tail;
+                tail.next = newNode;
+                tail = newNode;
+            }
+            size++;
         }
 
         public void addTail(string his)

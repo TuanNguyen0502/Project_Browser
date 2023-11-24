@@ -252,6 +252,7 @@
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "WEB BROWSER";
+            FormClosed += Form1_FormClosed;
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel2.ResumeLayout(false);
             flowLayoutPanel3.ResumeLayout(false);
