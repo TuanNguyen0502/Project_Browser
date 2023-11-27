@@ -36,6 +36,17 @@ namespace Project_Browser
             tail = null;
             currentPage = null;
         }
+
+        public bool Exist(string address)
+        {
+            for (NodeBookmark p = head;  p != null; p = p.next)
+            {
+                if (p.url == address)
+                    return true;
+            }
+            return false;
+        }
+
         public void addTail(string address)
         {
             if (address == "NULL")

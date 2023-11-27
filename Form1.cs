@@ -60,7 +60,7 @@ namespace Project_Browser
                 textBox_URL.Text = address;
 
                 // Thêm page mới vào tab hiện tại
-                listWindow.currentWindow.window.currentTab.tab.addTail(address);
+                listWindow.currentWindow.window.currentTab.tab.AddNewPage(address);
 
                 // Thêm lịch sử
                 listHistory.addTail(address);
@@ -111,7 +111,7 @@ namespace Project_Browser
                     textBox_URL.Text = address;
 
                     // Thêm page mới vào tab hiện tại
-                    listWindow.currentWindow.window.currentTab.tab.addTail(address);
+                    listWindow.currentWindow.window.currentTab.tab.AddNewPage(address);
 
                     flowLayoutPanel5.Visible = false;
 
@@ -177,8 +177,6 @@ namespace Project_Browser
             // Update thông tin
             textBox_CurrentTab.Text = "Tab " + listWindow.currentWindow.window.currentTab.index;
             textBox_URL.Text = "";
-
-            check_Back_Next_Button();
 
             flowLayoutPanel2.Controls.Add(button);
         }
@@ -251,6 +249,12 @@ namespace Project_Browser
                 return;
 
             string address = textBox_URL.Text;
+
+            if (listBookmark.Exist(address))
+            {
+                return;
+            }
+
             listBookmark.addTail(address);
 
             Button button = new Button();
@@ -278,7 +282,7 @@ namespace Project_Browser
                 else
                 {
                     textBox_URL.Text = address;
-                    listWindow.currentWindow.window.currentTab.tab.addTail(address);
+                    listWindow.currentWindow.window.currentTab.tab.AddNewPage(address);
                     textBox_Search.Clear();
 
                     // Thêm lịch sử

@@ -31,7 +31,19 @@ namespace Project_Browser
         {
             head = null;
             tail = null;
-            currentPage = new NodePage("NULL");
+            currentPage = null;
+        }
+
+        public void AddNewPage(string address)
+        {
+            // Xoá các page phía sau current
+            while (currentPage != tail)
+            {
+                deleteTail();
+            }
+
+            // Thêm page mới vào tail
+            addTail(address);
         }
 
         public void addTail(string address)
