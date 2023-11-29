@@ -45,9 +45,11 @@
             button_Search = new Button();
             flowLayoutPanel4 = new FlowLayoutPanel();
             textBox_CurrentTab = new TextBox();
+            pictureBox1 = new PictureBox();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -65,6 +67,7 @@
             // button_NewWin
             // 
             button_NewWin.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            button_NewWin.ForeColor = Color.Red;
             button_NewWin.Location = new Point(3, 3);
             button_NewWin.Name = "button_NewWin";
             button_NewWin.Size = new Size(161, 51);
@@ -76,6 +79,7 @@
             // button_NewTab
             // 
             button_NewTab.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            button_NewTab.ForeColor = Color.Red;
             button_NewTab.Location = new Point(170, 3);
             button_NewTab.Name = "button_NewTab";
             button_NewTab.Size = new Size(112, 51);
@@ -87,6 +91,7 @@
             // button_History
             // 
             button_History.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            button_History.ForeColor = Color.Red;
             button_History.Location = new Point(288, 3);
             button_History.Name = "button_History";
             button_History.Size = new Size(140, 51);
@@ -101,7 +106,7 @@
             flowLayoutPanel5.AutoSize = true;
             flowLayoutPanel5.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             flowLayoutPanel5.FlowDirection = FlowDirection.BottomUp;
-            flowLayoutPanel5.Location = new Point(595, 60);
+            flowLayoutPanel5.Location = new Point(595, 65);
             flowLayoutPanel5.MaximumSize = new Size(380, 580);
             flowLayoutPanel5.MinimumSize = new Size(380, 580);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
@@ -124,6 +129,7 @@
             // 
             // button_Tab_0
             // 
+            button_Tab_0.ForeColor = Color.Black;
             button_Tab_0.Location = new Point(3, 3);
             button_Tab_0.Name = "button_Tab_0";
             button_Tab_0.Size = new Size(112, 51);
@@ -147,20 +153,23 @@
             // 
             // button_BackPage
             // 
+            button_BackPage.BackColor = Color.LightSkyBlue;
             button_BackPage.Enabled = false;
             button_BackPage.FlatStyle = FlatStyle.Flat;
+            button_BackPage.ForeColor = Color.LightSkyBlue;
             button_BackPage.Image = Properties.Resources.icons8_back_arrow_64;
             button_BackPage.Location = new Point(3, 3);
             button_BackPage.Name = "button_BackPage";
             button_BackPage.Size = new Size(66, 59);
             button_BackPage.TabIndex = 3;
-            button_BackPage.UseVisualStyleBackColor = true;
+            button_BackPage.UseVisualStyleBackColor = false;
             button_BackPage.Click += button_BackPage_Click;
             // 
             // button_NextPage
             // 
             button_NextPage.Enabled = false;
             button_NextPage.FlatStyle = FlatStyle.Flat;
+            button_NextPage.ForeColor = Color.LightSkyBlue;
             button_NextPage.Image = (Image)resources.GetObject("button_NextPage.Image");
             button_NextPage.Location = new Point(75, 3);
             button_NextPage.Name = "button_NextPage";
@@ -196,7 +205,7 @@
             // 
             textBox_Search.BorderStyle = BorderStyle.None;
             textBox_Search.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_Search.Location = new Point(239, 468);
+            textBox_Search.Location = new Point(239, 561);
             textBox_Search.Name = "textBox_Search";
             textBox_Search.Size = new Size(486, 38);
             textBox_Search.TabIndex = 6;
@@ -207,7 +216,7 @@
             button_Search.BackColor = Color.White;
             button_Search.FlatStyle = FlatStyle.Flat;
             button_Search.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            button_Search.Location = new Point(731, 468);
+            button_Search.Location = new Point(731, 561);
             button_Search.Name = "button_Search";
             button_Search.Size = new Size(107, 45);
             button_Search.TabIndex = 7;
@@ -218,7 +227,7 @@
             // flowLayoutPanel4
             // 
             flowLayoutPanel4.Dock = DockStyle.Top;
-            flowLayoutPanel4.ForeColor = Color.LightPink;
+            flowLayoutPanel4.ForeColor = Color.Black;
             flowLayoutPanel4.Location = new Point(0, 180);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
             flowLayoutPanel4.Size = new Size(978, 60);
@@ -227,7 +236,7 @@
             // textBox_CurrentTab
             // 
             textBox_CurrentTab.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_CurrentTab.Location = new Point(75, 467);
+            textBox_CurrentTab.Location = new Point(75, 560);
             textBox_CurrentTab.Name = "textBox_CurrentTab";
             textBox_CurrentTab.ReadOnly = true;
             textBox_CurrentTab.Size = new Size(150, 39);
@@ -235,14 +244,24 @@
             textBox_CurrentTab.Text = "Tab 0";
             textBox_CurrentTab.TextAlign = HorizontalAlignment.Center;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.Google_wordmark;
+            pictureBox1.Location = new Point(75, 245);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(790, 309);
+            pictureBox1.TabIndex = 11;
+            pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.LightPink;
+            BackColor = Color.LightSkyBlue;
             ClientSize = new Size(978, 644);
-            Controls.Add(textBox_CurrentTab);
             Controls.Add(flowLayoutPanel5);
+            Controls.Add(pictureBox1);
+            Controls.Add(textBox_CurrentTab);
             Controls.Add(flowLayoutPanel4);
             Controls.Add(button_Search);
             Controls.Add(textBox_Search);
@@ -257,6 +276,7 @@
             flowLayoutPanel2.ResumeLayout(false);
             flowLayoutPanel3.ResumeLayout(false);
             flowLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -279,5 +299,6 @@
         private TextBox textBox_CurrentTab;
         private Button button_History;
         private FlowLayoutPanel flowLayoutPanel5;
+        private PictureBox pictureBox1;
     }
 }
