@@ -288,6 +288,9 @@ namespace Project_Browser
                     // Thêm lịch sử
                     listHistory.addTail(address);
 
+                    // Cập nhật lại text của tab hiện tại
+                    currentButton.Text = listWindow.currentWindow.window.currentTab.tab.currentPage.url + "";
+
                     // Thêm button vào danh sách hiện lịch sử
                     Button his = new Button();
                     his.Name = "button_His_";
