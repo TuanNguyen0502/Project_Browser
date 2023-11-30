@@ -121,7 +121,7 @@
             flowLayoutPanel2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             flowLayoutPanel2.Controls.Add(button_Tab_0);
             flowLayoutPanel2.Dock = DockStyle.Top;
-            flowLayoutPanel2.ForeColor = Color.LightPink;
+            flowLayoutPanel2.ForeColor = Color.Black;
             flowLayoutPanel2.Location = new Point(0, 60);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Size = new Size(978, 57);

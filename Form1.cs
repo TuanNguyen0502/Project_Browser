@@ -29,7 +29,12 @@ namespace Project_Browser
 
         private void check_Back_Next_Button()
         {
-            if (listWindow.currentWindow.window.currentTab.tab.currentPage.prev != null)
+            
+            if (listWindow.currentWindow.window.currentTab.tab.currentPage == null)
+            {
+                button_BackPage.Enabled = false;
+            }
+            else if (listWindow.currentWindow.window.currentTab.tab.currentPage.prev != null)
             {
                 button_BackPage.Enabled = true;
             }
@@ -37,7 +42,12 @@ namespace Project_Browser
             {
                 button_BackPage.Enabled = false;
             }
-            if (listWindow.currentWindow.window.currentTab.tab.currentPage.next != null)
+
+            if(listWindow.currentWindow.window.currentTab.tab.currentPage == null)
+            {
+                button_BackPage.Enabled = false;
+            }
+            else if (listWindow.currentWindow.window.currentTab.tab.currentPage.next != null)
             {
                 button_NextPage.Enabled = true;
             }
@@ -45,6 +55,7 @@ namespace Project_Browser
             {
                 button_NextPage.Enabled = false;
             }
+            
         }
 
         private void button_Search_Click(object sender, EventArgs e)
@@ -199,7 +210,12 @@ namespace Project_Browser
             if (e.Button == MouseButtons.Left)
             {
                 textBox_CurrentTab.Text = "Tab " + listWindow.currentWindow.window.currentTab.index;
-                textBox_URL.Text = listWindow.currentWindow.window.currentTab.tab.currentPage.url;
+                if (listWindow.currentWindow.window.currentTab.tab.currentPage == null)
+                {
+                    textBox_URL.Text = "";
+                }
+                else
+                    textBox_URL.Text = listWindow.currentWindow.window.currentTab.tab.currentPage.url + "";
 
                 currentButton = button;
 
