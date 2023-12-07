@@ -6,5 +6,5 @@ Có các trức năng như:
 3. Di chuyển qua lại giữa các tab
 4. Thêm/xoá page (Nếu thêm page mới thì sẽ xoá các page phía sau page hiện tại)
 5. Back/next page
-6. Thêm/xoá lịch sử truy cập page theo địa chỉ vả thời gian (Lịch sử hiện thị theo danh sách mới nhất)
+6. Thêm/xoá lịch sử truy cập page theo địa chỉ và thời gian (Lịch sử hiển thị theo danh sách mới nhất)
 7. Thêm/xoá bookmark
